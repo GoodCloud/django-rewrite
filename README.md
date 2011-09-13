@@ -1,5 +1,3 @@
-django-rewrite is a simple-to-use website and blog application for django.
-
 Overview
 ========
 Rewrite is a user-centric website and blogging application for Django.  It's designed to be simple to use. Its target audience is people and organizations who need a website, and who aren't particularly likely to know what a "CMS" is.  Editing websites and posting blog entries should be simple.  We built rewrite to make it that way.
@@ -35,6 +33,7 @@ Dependencies
 - south, if you'd like to use the migrations (we'll maintain any schema changes in it.)
 
 For the tests:
+
 - django_sane_testing
 - qi_toolkit : Some of the tests and possibly other things depend on the helper functions in the toolkit. Long term, we'll either remove the dependency, or integrate it in a more stable/reliable way.
 - maybe some other dependencies? We're using it within a pretty heavy functional testing structure, so it's possible something has been missed. Please file an issue if so. 
