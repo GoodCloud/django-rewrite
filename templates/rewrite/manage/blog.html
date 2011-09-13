@@ -1,0 +1,33 @@
+{% extends "rewrite/manage/base.html" %}
+{% block js %}{{block.super}}
+	<script>
+		$(function(){
+			rewrite.manage.init();
+		});
+	</script>
+{% endblock %}
+
+
+{% block manage_page_content %}
+	<a href="{% url website:blog_home %}"  class="view_blog_btn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">View Blog</span></a>
+	<instructions>Click on a post title to edit.</instructions>
+
+	<posts>
+	{% for b in blog_posts %}
+		<post class="list_block ui-state-default ui-corner-all" >
+			<name><a href="{% url website:blog_entry b.slug %}">{{b}}</a></name>
+			<delete><a href="{% url rewrite:delete_post b.id %}" class="ui-icon-closethick ui-icon">Delete</a></delete>
+			<date>{% if b.is_published %}{{b.publish_date|date}}{% else %}Draft{% endif %}</date>
+		</post>
+	{% endfor %}
+	</posts>
+	<a href="#" class="new_post_link ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">New Blog Post</span></a>
+	<form action="{% url rewrite:new_blog_post %}" method="POST" class="new_post_form">{% csrf_token %}
+		{{new_blog_post_form.as_p}}
+		<input class="ui-button ui-widget ui-state-default ui-corner-all" 						type="submit" value="Create Draft Post" />
+		<input class="cancel_post_link ui-button ui-widget ui-state-default ui-corner-all"  type="reset" value="Cancel" />
+	</form>
+
+
+	
+{% endblock %}

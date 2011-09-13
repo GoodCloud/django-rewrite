@@ -1,0 +1,6 @@
+<div class="tabs">
+	<a class="tab pages {% if tab == "pages" %}current{% endif %}" href="{% url rewrite:manage_pages %}">Pages</a>
+	{% if website.blog_enabled %}<a class="tab blog {% if tab == "blog" %}current{% endif %}" href="{% url rewrite:manage_blog %}">Blog</a>{% endif %}
+	<a class="tab template {% if tab == "templates" %}current{% endif %}" href="{% url rewrite:manage_templates %}">Templates</a>
+	<a class="tab settings {% if tab == "settings" %}current{% endif %}" href="{% url rewrite:manage_settings %}">Settings</a>
+</div>

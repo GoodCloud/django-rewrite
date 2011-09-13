@@ -1,0 +1,32 @@
+[
+    {
+        "pk": 1, 
+        "model": "rewrite.rewritewebsite", 
+        "fields": {
+            "blog_enabled": true, 
+            "name": "default"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "rewrite.rewritetemplate", 
+        "fields": {
+            "post_content_html": null, 
+            "extra_head_html": null, 
+            "name": "Completely Blank", 
+            "show_main_nav": true, 
+            "pre_content_html": null, 
+            "page_header_html": null, 
+            "show_section_nav": true,
+            "website": 1
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "rewrite.rewriteblog", 
+        "fields": {
+            "template": 1,
+            "website": 1
+        }
+    }
+]

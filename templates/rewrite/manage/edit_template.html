@@ -1,0 +1,43 @@
+{% extends "rewrite/manage/base.html" %}
+{% block extra_head_html %}{{block.super}}
+	{% include "rewrite/manage/_code_textareas.html" %}
+	<script>
+	$(function(){
+		rewrite.manage.init();
+	});</script>
+{% endblock %}
+{% block manage_page_content %}
+	{% if changes_saved %}
+	<div class="in_place_changes_saved ui-state-highlight ui-corner-all"><p><icon class="ui-icon ui-icon-info"></icon>Changes Saved.</p></div>
+	{% endif %}
+	<a href="{% url rewrite:manage_templates %}" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">All Templates</span></a>
+	<instructions>To create or edit a template, you'll need to know some HTML. You can edit any of the sections in white below.</instructions>
+<form action="{% url rewrite:edit_template template.pk %}" method="POST" class="rewrite_edit_template">{% csrf_token %}
+
+Name: {{template_form.name}}
+
+	<pre class="html_page">
+<code class="big">&lt;html&gt;
+   &lt;head&gt;
+</code><code>
+      &lt;title&gt;&lt;!-- Post title --&gt;&lt;/title&gt;
+      &lt;keywords&gt;&lt;!-- Post keywords --&gt;&lt;/keywords&gt;
+      &lt;description&gt;&lt;!-- Post description --&gt;&lt;/description&gt;
+      &lt;!-- Built-in head: HTML5 Boilerplate, jQuery, jQuery UI, 1140px --&gt;</code>{{template_form.extra_head_html}}<code class="big">      
+   &lt;/head&gt;
+   &lt;body&gt;</code><span class="body_code">
+   	  {{template_form.page_header_html}}
+      {{template_form.show_main_nav}} <code class="main_nav {% if not template_form.instance.show_main_nav %}disabled{% endif %}">&lt;main_nav&gt; &lt;!-- Main navigation --&gt; &lt;main_nav&gt;</code>
+      {{template_form.show_section_nav}} <code class="section_nav {% if not template_form.instance.show_main_nav %}disabled{% endif %}">&lt;section_nav&gt; &lt;!-- Section navigation --&gt; &lt;/section_nav&gt;</code>
+
+         <code>&lt;div id="main" role="main"&gt;</code><span class="main_code">
+	     {{template_form.pre_content_html}}<code>            &lt;div id="page_content"&gt;
+              &lt;!-- Page Content or Blog Post will show here --&gt;
+            &lt;/div&gt;</code>{{template_form.post_content_html}}</span></span><code>
+          &lt;/div&gt;</code><code class="big">
+   &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+		<input class="ui-button ui-widget ui-state-default ui-corner-all" type="submit" id="id_save_template_changes" value="Save Changes" >
+	</form>
+{% endblock %}

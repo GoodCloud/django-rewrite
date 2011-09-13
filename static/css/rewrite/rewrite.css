@@ -1,0 +1,225 @@
+body {
+	background: #EEE;
+}
+h1.page_title {
+	color: #999;
+	font-weight: normal;
+	display: block;
+	padding: 20px 0px 10px 20px;
+	font-size: 28px;
+}
+.tabs {
+	width: 98%;
+	margin: 20px auto 0px auto;
+	text-align: center;
+	height: 49px;
+	clear: both;
+	display: block;
+}
+
+.tabs a.tab {
+	display: block;
+	float: left;
+	border: 1px solid #DDD;
+	border-width: 1px 1px 0px 1px;
+	border-top-left-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-webkit-border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	-moz-border-radius-topright: 4px;
+	-webkit-border-top-right-radius: 4px;
+	margin: 3px 5px;
+	padding: 10px;
+	min-width: 15%;
+
+	text-decoration: none;
+	font-size: 20px;
+	background-color: #F8F8F8;
+	color: #BBB;
+}
+.tabs a.tab.current {
+	background-color: #FFF;
+	color: #0355aa;
+	padding: 14px 12px 10px 12px;
+	margin: 0px 3px 0px 3px;
+	border-color: #999;
+	border-bottom: 1px solid #FFF;	
+}
+#main {
+	width: 94%;
+	margin: 0px auto;
+	display: block;
+	border: 1px solid #999;
+	min-height: 100px;
+	padding: 15px 2%;
+	background-color: #FFF;
+}
+sections {
+	display: block;
+}
+section {
+	display: block;
+	position: relative;
+	margin: 4px 0px;
+	border: 1px solid #EEE;
+	background-color: #FDFDFD;
+	padding: 10px;
+}
+section .pages {
+	padding: 10px;
+}
+section .page, post, template {
+	display: block;
+	margin: 1px 0px 1px 0px;
+	list-style: none;
+}
+section name {
+	font-size: 18px;
+}
+section view {
+	float: right;
+	margin-right: 10px;
+}
+templates {
+	display: block;
+	width: 100%;
+	overflow: auto;
+}
+delete {
+	float: right;
+}
+.page name {
+	font-size: 14px;
+}
+.page name:hover, post name:hover {
+	text-decoration: underline;
+}
+template {
+	display: block;
+}
+.CodeMirror {
+	border: 1px solid #E2E2E2;
+	margin-left: 3.2em;
+	background-color: #FFF;
+}
+.body_code .CodeMirror {
+	margin-left: 5.4em;
+}
+.body_code .main_code .CodeMirror {
+	margin-left: 7.2em;
+}
+.CodeMirror-scroll {
+  height: auto;
+  overflow-y: hidden;
+  overflow-x: auto;
+  width: 100%;
+}
+.rewrite_edit_template p {
+	display: block;
+	width: 48%;
+	float: left;
+	padding: 10px 0px;
+	margin: 0px 1%;
+}
+
+.list_block {
+	border: 1px solid #CCC;
+	padding: 5px;
+}
+.uses_template, post date {
+	float: right;
+	margin-right: 30%;
+}
+
+.new_page_form, .new_section_form, .new_post_form, .new_template_form {
+	display: none;
+	padding: 10px;
+	background-color: #F5F5F5;
+}
+icon {
+	float: left;
+	display: block;
+	margin-right: 4px;
+}
+.new_page_link {
+	margin: 5px 0px 0px 10px;
+}
+.new_section_link, .new_post_link, .new_template_link {
+	margin: 10px 0px 0px 0px;
+}
+icon.drag_icon {
+	position: absolute;
+	left: -17px;
+	
+	border: 1px solid #EEE;
+	background-color: #FDFDFD;
+	border-right-color: transparent;
+
+}
+instructions {
+	display: block;
+	color: #AAA;
+	padding: 5px 0px;
+}
+.new_page_form {
+	margin: 10px;
+	
+}
+fields {
+	display: block;
+	padding: 10px 0px;
+}
+#id_name {
+	font-size: 16px;
+	padding: 2px;
+	width: 40%;
+}
+#id_title {
+	font-size: 16px;
+	padding: 2px;
+	width: 40%;
+}
+status {
+	float: right;
+	color: #AAA;
+}
+posts {
+	display: block;
+	margin-top: 10px;
+}
+posts post {
+	display: block;
+}
+.view_blog_btn {
+	float: right;
+}
+.rewrite_edit_template code.big {
+	font-size: 16px;
+}
+pre.html_page {
+	background-color: #F6F6F6;
+	padding: 10px;
+	border: 1px solid #EEE;
+	margin-top: 10px;
+}
+#id_show_main_nav, #id_show_section_nav {
+	margin-left: 1.9em;
+}
+
+code.main_nav.disabled, code.section_nav.disabled {
+	color: #DDD;
+	text-decoration: line-through;
+}
+.settings_form p {
+	padding: 6px 0px;
+}
+.settings_form #id_domain {
+	width: 300px;
+}
+.in_place_changes_saved {
+	display: block;
+	font-size: 16px;
+	padding: 10px;
+	width: 50%;
+	margin: 10px auto;
+}

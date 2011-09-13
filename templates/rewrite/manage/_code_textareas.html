@@ -1,0 +1,20 @@
+<script src="{{STATIC_URL}}js/rewrite/libs/codemirror.js"></script>
+<link rel="stylesheet" href="{{STATIC_URL}}css/rewrite/codemirror/codemirror.css">
+<script src="{{STATIC_URL}}js/rewrite/libs/mode/javascript/javascript.js"></script>
+<script src="{{STATIC_URL}}js/rewrite/libs/mode/xml/xml.js"></script>
+<script src="{{STATIC_URL}}js/rewrite/libs/mode/css/css.js"></script>
+<script src="{{STATIC_URL}}js/rewrite/libs/mode/htmlmixed/htmlmixed.js"></script>
+<link rel="stylesheet" href="{{STATIC_URL}}css/rewrite/codemirror/theme/default.css">
+<script>
+	$(function(){
+		rewrite.editor.state.codeMirrorInstances = {}
+		$("textarea").each(function(){
+			rewrite.editor.state.codeMirrorInstances[$(this).attr("id")] = CodeMirror.fromTextArea($(this)[0], {
+				name: "text/html", 
+				htmlMode: true,
+				tabMode: "indent",
+			});	
+		});
+		console.log(rewrite.editor.state.codeMirrorInstances)
+	});
+</script>

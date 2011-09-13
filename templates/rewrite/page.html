@@ -1,0 +1,49 @@
+{% extends "rewrite/base.html" %}
+{% block title %}{{page.title}}{% endblock %}
+{% block description %}{{page.description}}{% endblock %}
+{% block keywords %}{{page.keywords}}{% endblock %}
+{% block extra_head_html %}
+{% if request.user.is_authenticated %}<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/rewrite/rewrite-public.css">{% endif %}
+{{template.extra_head_html|default_if_none:""|safe}}
+{% endblock %}
+{% block js %}{{block.super}}
+<script>
+{% block rewrite_setup %}
+	rewrite.editor.urls.init = function() {
+		rewrite.editor.urls.save_page = "{% url rewrite:save_page page.pk %}"
+	}		
+	$(function(){
+		rewrite.editor.init();
+	});
+{% endblock %}
+</script>
+{% endblock %}
+{% block content %}
+
+{% if request.user.is_authenticated %}
+	<div id="rewrite_admin_bar">
+	{% block admin_bar %}
+		<a href="{% url rewrite:manage_home %}" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">Manage Website</span></a>
+		<span class="admin_bar_title">Admin Panel</span>
+		<div class="rewrite_form_container list_block ui-state-default">
+		<div class="rewrite_form_toggle_link"><icon class="ui-icon"></icon>Page Details</div>
+		<form action="" method="POST" class="blog_post_form rewrite_associated_form">
+		{{page_form.as_p}}
+		</form>
+		</div>
+		{% include "rewrite/_admin_bar_save_and_editor.html" %}		
+	{% endblock %}
+	</div>
+{% endif %}
+
+    <header>
+  		{{ template.page_header_html|default_if_none:""|safe }}
+  		{% include "rewrite/_main_nav.html" %}
+  		{% include "rewrite/_section_nav.html" %}
+    </header>
+    <div id="main" role="main">
+	  {{ template.pre_content_html|default_if_none:""|safe }}
+	  <div id="page_content">{% block rewrite_page_content %}{% if request.user.is_authenticated %}<div id="rewrite_editable_body">{% endif %}{% block page_content %}{{ page.content|default_if_none:""|safe }}{% endblock %}{% if request.user.is_authenticated %}</div>{% endif %}{% endblock %}</div>
+	  {{ template.post_content_html|default_if_none:""|safe }}
+    </div>
+{% endblock %}

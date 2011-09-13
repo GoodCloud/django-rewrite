@@ -1,0 +1,6 @@
+{% if template.show_main_nav %}<main_nav>
+{% for s in website.sections %}
+{% if s.is_blog_section %}<a href="{% url website:blog_home %}" class="{% if s == section %}current{% endif %}">{{s.name}}</a>
+{% else %}{% if s.first_page %}<a href="{% url website:page s.slug s.first_page.slug %}" class="{% if s == page.section %}current{% endif %}">{{s.name}}</a>{% endif %}{% endif %}
+{% endfor %}
+</main_nav>{% endif %}

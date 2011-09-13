@@ -1,0 +1,21 @@
+{% extends "rewrite/page.html" %}
+{% block rewrite_setup %}
+	rewrite.editor.urls.init = function() {
+		rewrite.editor.urls.save_page = "{% url rewrite:save_blog_post post.pk %}"
+	}		
+	$(function(){
+		rewrite.editor.init();
+	});
+{% endblock %}
+
+{% block admin_bar %}
+	Admin Bar:
+	<div class="rewrite_form_toggle_link"><icon class="ui-icon"></icon>Post Details</div>
+	<form action="" method="POST" class="blog_post_form rewrite_associated_form">
+	{{blog_post_form.as_p}}
+	</form>
+	{% include "rewrite/_admin_bar_save_and_editor.html" %}
+{% endblock %}
+{% block page_content %}<h1 class="post_title">{{ page.title|default_if_none:""|safe }}</h1>
+<date>{{page.publish_date|date}}</date>
+{{ page.content|default_if_none:""|safe }}{% endblock %}

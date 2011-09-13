@@ -1,0 +1,66 @@
+#rewrite_admin_bar {
+	display: block;
+	width: 100%;	
+	min-height: 30px;
+	background-color: #FAFAFA;
+	position: relative;
+}
+#rewrite_editor {
+	/*display: none;*/
+}
+:focus {
+  outline: none;
+
+}
+#rewrite_editable_body textarea {
+	width: 100%;
+	outline: none;
+}
+#rewrite_editable_body textarea[name=temp_editing] {
+	border: 0px;
+}
+#rewrite_editable_body {
+	width: 100%;
+}
+#rewrite_admin_bar .edit_and_save_links {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	display: none;
+}
+.rewrite_associated_form {
+	display: none;
+}
+#rewrite_admin_bar .helptext {
+	display: block;
+	font-size: 12px;
+	color: #AAA;
+}
+#rewrite_admin_bar .rewrite_associated_form p {
+	display: block;
+	padding: 10px;
+}
+#rewrite_admin_bar .rewrite_form_toggle_link icon {
+	display: block;
+	float: left;
+}
+
+#rewrite_admin_bar .rewrite_form_toggle_link {
+	display: none;
+}
+#rewrite_admin_bar .rewrite_associated_form {
+	display: none;
+}
+#rewrite_admin_bar .rewrite_form_container {
+	display: none;
+}
+#rewrite_admin_bar .admin_bar_title {
+	text-align: center;
+	width: 60%;
+	left: 20%;
+	display: block;
+	position: absolute;
+	top: 8px;
+	font-size: 16px;
+	color: #AAA;
+}

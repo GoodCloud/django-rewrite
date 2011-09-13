@@ -1,0 +1,30 @@
+{% extends "rewrite/manage/base.html" %}
+{% block js %}{{block.super}}
+	{% include "rewrite/manage/_code_textareas.html" %}
+	<script>
+		$(function(){
+			$( "section" ).sortable();
+			$( "section" ).disableSelection();
+			rewrite.manage.init();
+		});
+	</script>
+{% endblock %}
+{% block manage_page_content %}
+	<instructions>Click on a template name to edit.</instructions>
+	<templates>
+	{% for t in templates %}
+		<template class="list_block ui-state-default ui-corner-all" >
+			<name><a href="{% url rewrite:edit_template t.id %}">{{t}}</a></name>
+			<delete>{% if t.in_use %}In Use {% else %}<a href="{% url rewrite:delete_template t.id %}" class="ui-icon-closethick ui-icon">Delete</a>{% endif %}</delete>
+		</template>	
+	{% endfor %}
+	</templates>
+
+	<a href="#" class="new_template_link ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span class="ui-button-text">New Template</span></a>
+	<form action="{% url rewrite:new_template %}" method="POST" class="new_template_form">{% csrf_token %}
+		{{new_template_form.as_p}}
+		<input class="ui-button ui-widget ui-state-default ui-corner-all" 						type="submit" value="Create Template" />
+		<input class="cancel_template_link ui-button ui-widget ui-state-default ui-corner-all"  type="reset" value="Cancel" />
+	</form>
+
+{% endblock %}

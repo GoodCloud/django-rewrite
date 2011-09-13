@@ -1,0 +1,15 @@
+{% extends "rewrite/base.html" %}
+{% block title %}Website management: {{tab|title}}{% endblock %}
+{% block css %}{{block.super}}<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/rewrite/rewrite.css">{% endblock %}
+
+{% block content %}
+	<h1 class="page_title">Website Manager</h1>
+    <header>
+    	{% include "rewrite/manage/_tabs.html" %}
+    </header>
+    <div id="main" role="main">
+    	{% block manage_page_content %}
+
+    	{% endblock %}
+    </div>
+{% endblock %}

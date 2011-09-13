@@ -1,0 +1,19 @@
+{% extends "rewrite/manage/base.html" %}
+
+{% block js %}{{block.super}}
+<script>
+$(function(){
+	rewrite.manage.init();
+});</script>
+{% endblock %}
+
+{% block manage_page_content %}
+	<instructions>General settings for your website and blog.</instructions>
+	<form action="" method="POST" class="settings_form">{% csrf_token %}
+	<fields>
+	{{website_settings_form.as_p}}
+	<span class="blog_settings {% if not website_settings_form.instance.blog_enabled %}hidden{% endif %}">{{blog_settings_form.as_p}}</span>
+	</fields>
+		<input class="ui-button ui-widget ui-state-default ui-corner-all" type="submit" value="Save Settings" >
+	</form>
+{% endblock %}

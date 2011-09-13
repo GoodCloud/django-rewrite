@@ -1,0 +1,20 @@
+{% extends "rewrite/page.html" %}
+{% block rewrite_setup %}{% endblock %}
+
+{% block admin_bar %}
+	Admin Bar:
+{% endblock %}
+
+{% block rewrite_page_content %}
+<blog>
+	<posts>
+	{% for b in blog_posts %}
+		<post>
+			<name><a href="{% url website:blog_entry b.slug %}">{{b.title}}</a></name>
+			<date>{{b.publish_date|date}}</date>
+			<content>{{b.content|safe}}</content>
+		</post>
+	{% endfor %}
+	</posts>
+</blog>
+{% endblock %}
