@@ -49,6 +49,11 @@ Standard stuff:
 * `./manage.py migrate`
 * `./manage.py collectstatic` (before deploying)
 
+Add the URLs:
+```
+	url(r'^website-admin/',     include('rewrite.urls.private',     app_name="rewrite",         namespace="rewrite")),
+    url(r'^',              		include('rewrite.urls.public',      app_name="rewrite",         namespace="website")),
+```
 Usage
 =====
 
